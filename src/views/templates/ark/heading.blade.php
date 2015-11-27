@@ -7,7 +7,7 @@
 			<tr>
 				<td class="w560" width="560">
 					<div class="article-content" align="left">
-						<{{ $level }}>{{ $heading }}</{{ $level }}>
+						<{{ $level }}>{!! $heading !!}</{{ $level }}>
 					</div>
 				</td>
 			</tr>

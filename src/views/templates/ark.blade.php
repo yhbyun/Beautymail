@@ -19,7 +19,7 @@
 					</tr>
 					<tr class="mobile_only">
 						<td class="w640" width="640" align="center">
-							<img class="mobile_only" border="0" src="{{ $logo['path'] }}" alt="{{ $senderName or '' }}" width="{{ $logo['width'] }}" height="{{ $logo['height'] }}" />
+							<a href="{{ $logo['url'] }}"><img class="mobile_only" border="0" src="{{ $logo['path'] }}" alt="{{ $senderName or '' }}" width="{{ $logo['width'] }}" height="{{ $logo['height'] }}" /></a>
 						</td>
 					</tr>
 					<tr class="mobile_only">
@@ -37,7 +37,7 @@
 								<tr>
 									<td class="w20" width="20"></td>
 									<td id="logo" width="{{ $logo['width'] }}" valign="top">
-										<img border="0" src="{{ $logo['path'] }}" alt="{{ $senderName or ''}}" width="{{ $logo['width'] }}" height="{{ $logo['height'] }}" />
+										<a href="{{ $logo['url'] }}"><img border="0" src="{{ $logo['path'] }}" alt="{{ $senderName or ''}}" width="{{ $logo['width'] }}" height="{{ $logo['height'] }}" /></a>
 									</td>
 									<td class="w30" width="30"></td>
 								</tr>

@@ -27,6 +27,7 @@ return [
             'path'   => '%PUBLIC%/vendor/Beautymail/assets/images/sunny/logo.png',
             'width'  => '',
             'height' => '',
+            'url'    => '',
         ],
 
         'twitter'  => null,
