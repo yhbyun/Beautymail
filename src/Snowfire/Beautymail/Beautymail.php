@@ -49,6 +49,7 @@ class Beautymail
 
         $content = view($view, $data)->render();
         $formatter = new CssToInlineStyles($content, $this->stringifyCss());
+        $formatter->setUseInlineStylesBlock(true);
 
         return $formatter->convert();
     }
