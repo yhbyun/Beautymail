@@ -1,8 +1,7 @@
-<?php
+<?php namespace Snowfire\Beautymail;
 
-namespace Snowfire\Beautymail;
-
-use Illuminate\Contracts\Mail\Mailer;
+use Snowfire\Beautymail\CssCapture\CaptureInterface;
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class Beautymail
 {
@@ -14,11 +13,9 @@ class Beautymail
     private $settings;
 
     /**
-     * The mailer contract depended upon.
-     *
-     * @var \Illuminate\Contracts\Mail\Mailer
+     * @var CaptureInterface[]
      */
-    private $mailer;
+    protected $css = [];
 
     /**
      * Initialise the settings and mailer.
@@ -28,7 +25,6 @@ class Beautymail
     public function __construct($settings)
     {
         $this->settings = $settings;
-        $this->mailer = app()->make('Illuminate\Contracts\Mail\Mailer');
         $this->setLogoPath();
     }
 
@@ -43,37 +39,46 @@ class Beautymail
     }
 
     /**
-     * Send a new message using a view.
-     *
-     * @param string|array    $view
-     * @param array           $data
-     * @param \Closure|string $callback
-     *
-     * @return void
-     */
-    public function send($view, array $data = [], $callback)
-    {
-        $data = array_merge($this->settings, $data);
-
-        $this->mailer->send($view, $data, $callback);
-    }
-
-    /**
      * @param $view
      * @param array $data
      * @return \Illuminate\View\View
      */
-    public function view($view, array $data = [])
+    public function render($view, array $data = [])
     {
         $data = array_merge($this->settings, $data);
 
-        return view($view, $data);
+        $content = view($view, $data)->render();
+        $formatter = new CssToInlineStyles($content, $this->stringifyCss());
+
+        return $formatter->convert();
+    }
+
+    /**
+     * @param CaptureInterface $capture
+     * @return $this
+     */
+    public function addCss(CaptureInterface $capture)
+    {
+        array_push($this->css, $capture);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    protected function stringifyCss()
+    {
+        $css = '';
+        foreach ($this->css as $capture) {
+            $css .= $capture->content();
+        }
+        return $css;
     }
 
     /**
      * @return mixed
      */
-    private function setLogoPath()
+    protected function setLogoPath()
     {
         $this->settings['logo']['path'] = str_replace(
             '%PUBLIC%',
