@@ -1,4 +1,5 @@
 $fontFamily: Helvetica Neue, Helvetica, Arial, Helvetica, serif;
+$highlight-color: #428bca;
 
 /* Mobile-specific Styles */
 @media only screen and (max-device-width: 480px) {
@@ -282,10 +283,11 @@ strong {
 	margin-bottom: 0px;
 }
 .article-content a {
-	color: #f26728;
-	font-weight: bold;
-	text-decoration: none;
-	font-weight: 600; }
+  color: #f26728;
+  //font-weight: bold;
+  text-decoration: none;
+  //font-weight: 600;
+}
 .article-content a:hover {
 	text-decoration: underline; }
 .article-content ol, .article-content ul {
@@ -339,3 +341,24 @@ strong {
 #street-address {
 	color: #ffffff;
 	white-space: pre-wrap; }
+
+.button-content {
+  .button {
+	letter-spacing: 0.08em;
+	border-radius: 3px;
+	text-transform: uppercase;
+	font-size: 18px;
+	cursor: pointer;
+	padding: 15px 26px;
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	transition: all 0.15s ease-in-out;
+	background: $highlight-color;
+	color: #fff;
+	border: none;
+	text-decoration: none;
+  }
+}
