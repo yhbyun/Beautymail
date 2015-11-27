@@ -11,7 +11,7 @@ class BeautymailServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     /**
      * Bootstrap the application events.
@@ -29,8 +29,6 @@ class BeautymailServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->loadViewsFrom(__DIR__.'/../../views', 'beautymail');
-
-        $this->app['mailer']->getSwiftMailer()->registerPlugin(new CssInlinerPlugin());
     }
 
     /**
@@ -40,10 +38,12 @@ class BeautymailServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Snowfire\Beautymail\Beautymail',
+        $this->app->singleton(
+            'Snowfire\Beautymail\Beautymail',
             function ($app) {
                 return new \Snowfire\Beautymail\Beautymail(config('beautymail.view'));
-            });
+            }
+        );
     }
 
     /**
@@ -53,6 +53,6 @@ class BeautymailServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return ['Snowfire\Beautymail\Beautymail'];
     }
 }
