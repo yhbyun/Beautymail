@@ -4,3 +4,4 @@ composer.lock
 .DS_Store
 src/styles/.sass-cache/*
 .idea
+/node_modules

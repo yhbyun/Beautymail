@@ -1,0 +1,28 @@
+{
+  "name": "beautymail",
+  "version": "1.0.0",
+  "description": "Beautymail makes it super easy to send beatiful responsive HTML emails. It's made for things like:",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yhbyun/Beautymail.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yhbyun/Beautymail/issues"
+  },
+  "homepage": "https://github.com/yhbyun/Beautymail#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.1.0",
+    "rimraf": "^2.4.4"
+  }
+}
