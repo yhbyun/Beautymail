@@ -23,6 +23,8 @@ return [
         'unsubscribe' => null,
         'address'     => null,
 
+        'img_base_url' => null,
+
         'logo'        => [
             'path'   => '%PUBLIC%/vendor/Beautymail/assets/images/sunny/logo.png',
             'width'  => '',
